@@ -22,11 +22,11 @@ namespace WebApplication1
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from employees where Name like @name";
+                    cmd.CommandText = "select * from student where stuname like @name";
                     cmd.Parameters.Add(new SqlParameter("@name", "%" + txtSearch.Text + "%"));
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -44,11 +44,11 @@ namespace WebApplication1
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from employees";
+                    cmd.CommandText = "select * from student";
                     cmd.Parameters.Add(new SqlParameter("@name", "%" + txtSearch.Text + "%"));
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -77,7 +77,7 @@ namespace WebApplication1
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
@@ -108,7 +108,7 @@ namespace WebApplication1
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {

@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ADODBConnectionString2 %>" SelectCommand="SELECT * FROM [Employees]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HOMEWORK-ADO.NET-NUNITConnectionString %>" SelectCommand="SELECT stuno, stuname, age, gender FROM student"></asp:SqlDataSource>
     
     </div>
     </form>

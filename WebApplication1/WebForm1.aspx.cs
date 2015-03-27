@@ -22,18 +22,18 @@ namespace WebApplication1
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             lbResult.Items.Clear();
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from employees where Name like @name";
+                    cmd.CommandText = "select * from student where stuname like @name";
                     cmd.Parameters.Add(new SqlParameter("@name", "%" + txtSearch.Text + "%"));
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         while ((dr.Read()))
                         {
-                            lbResult.Items.Add(dr.GetSqlInt32(0).ToString() + "\t" + dr.GetSqlString(1).ToString());
+                            lbResult.Items.Add(dr.GetSqlInt32(0).ToString() + "\t" + dr.GetSqlString(1).ToString() + "\t" + dr.GetInt32(2).ToString() + "\t" + dr.GetSqlString(3).ToString());
                         }
                         dr.Close();
                     }

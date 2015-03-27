@@ -27,7 +27,7 @@ namespace WebApplication1
         /// <param name="e"></param>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString2"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
