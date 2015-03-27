@@ -27,12 +27,12 @@ namespace WebApplication1
         /// <param name="e"></param>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString2"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from employees where Name like @name";
+                    cmd.CommandText = "select * from student where stuname like @name";
                     cmd.Parameters.Add(new SqlParameter("@name", "%" + txtSearch.Text + "%"));
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -49,20 +49,22 @@ namespace WebApplication1
         //ExecuteScalar
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string sql = @"INSERT INTO [dbo].[Employees]([Name],[Age])
+            string sql = @"INSERT INTO [dbo].[student]([stuno],[stuname],[age],[gender])
                              VALUES
-                               (@Name
-                               ,@Age);SELECT CAST(scope_identity() AS int);";
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+                               (@stuno,@Name
+                               ,@Age,@gender);SELECT CAST(scope_identity() AS int);";
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
                     cmd.CommandText = sql;
+                    cmd.Parameters.Add(new SqlParameter("@stuno", txtno.Text));
                     cmd.Parameters.Add(new SqlParameter("@Name", txtName.Text));
                     cmd.Parameters.Add(new SqlParameter("@Age", txtAge.Text));
+                    cmd.Parameters.Add(new SqlParameter("@gender", txtgender.Text));
 
-                    txtID.Text = cmd.ExecuteScalar().ToString();
+                    txtno.Text = cmd.ExecuteScalar().ToString();
                 }
                 btnSearch_Click(null, null);
             }
@@ -75,22 +77,28 @@ namespace WebApplication1
         /// <param name="e"></param>
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            string sql = @"update [Employees] set [Name] = @Name, [Age] = @Age
-                             where EmployeeID = @ID";
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            string sql = @"update [student] set [stuname] = @Name, [age] = @Age , [gender] = @gender
+                             where stuno = @stuno";
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["HOMEWORK-ADO.NET-NUNITConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SqlParameter("@ID", txtE_ID.Text));
-                    cmd.Parameters.Add(new SqlParameter("@Name", txtE_Name.Text));
-                    cmd.Parameters.Add(new SqlParameter("@Age", txtE_Age.Text));
+                    cmd.Parameters.Add(new SqlParameter("@stuno", txtno1.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Name", txtName1.Text));
+                    cmd.Parameters.Add(new SqlParameter("@Age", txtAge1.Text));
+                    cmd.Parameters.Add(new SqlParameter("@gender", txtgender1.Text));
 
                     cmd.ExecuteNonQuery();
                 }
                 btnSearch_Click(null, null);
             }
+        }
+
+        protected void txtID_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

@@ -25,16 +25,19 @@
             <SortedDescendingHeaderStyle BackColor="#00547E" />
         </asp:GridView>
         <hr />
-        ID:<asp:TextBox ID="txtID" runat="server" Enabled="false"></asp:TextBox>
+        ID:<asp:TextBox ID="txtno" runat="server"></asp:TextBox>
         Name:<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         Age:<asp:TextBox ID="txtAge" runat="server"></asp:TextBox>
+        gender:<asp:TextBox ID="txtgender" runat="server"></asp:TextBox>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="新增(ExecuteScalar)" />
 
 
         <br />
-        ID:<asp:TextBox ID="txtE_ID" runat="server"></asp:TextBox>
-        Name:<asp:TextBox ID="txtE_Name" runat="server"></asp:TextBox>
-        Age:<asp:TextBox ID="txtE_Age" runat="server"></asp:TextBox>
+        ID:<asp:TextBox ID="txtno1" runat="server"></asp:TextBox>
+        Name:<asp:TextBox ID="txtName1" runat="server"></asp:TextBox>
+        Age:<asp:TextBox ID="txtAge1" runat="server"></asp:TextBox>
+        gender:<asp:TextBox ID="txtgender1" runat="server"></asp:TextBox>
+
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="修改(ExecuteNonQuery)" />
 
 
